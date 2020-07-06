@@ -1,0 +1,53 @@
+<!-- Page for all of the current user's listings. -->
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <!-- Jumbotron. -->
+  <div class="jumbotron jumbotron-fluid card card-image text-white text-center" style="background-image: url(../static/Images/heroimage.png);">
+    <h1 class="display-2">Manage Listings</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <!-- Management table. -->
+  <section class="container-fluid py-3">
+    <div class="row">
+      <div class="col-12 px-0 px-md-5">
+        <h4 class="p-3 mb-0 text-center text-secondary bg-warning">Manage Listings</h4>
+        <div class="table-wrapper-scroll-y custom-scrollbar">
+          {% if (listing is defined) and listing %}
+            <table class="table table-bordered table-striped mb-0">
+              <thead class="text-secondary">
+                <tr>
+                  <th scope="col">Listing Title</th>
+                  <th scope="col">Date Listed</th>
+                  <th scope="col">Sale Price</th>
+                  <th scope="col">Manage Listing</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for s in listing %}
+                  <tr>
+                    <td style="vertical-align:middle;">{{s.listing_title}}</td>
+                    <td style="vertical-align:middle;">{{s.date_posted}}</td>
+                    <td style="vertical-align:middle;">{{s.purchase_price}}</td>
+                    <td><a href="/manage/{{s.id}}" class ="btn btn-warning">Manage Listing</a></td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+              <table class="table table-bordered table-striped mb-0">
+                <thead class="text-secondary">
+                  <tr>
+                    <th scope="col">No listings to manage yet!</th>
+                  </tr>
+                </thead>
+              </table>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

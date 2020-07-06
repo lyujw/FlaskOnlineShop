@@ -1,0 +1,141 @@
+<!-- Listing creation page. -->
+
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block header %}
+  <!-- Jumbotron. -->
+  <div class="jumbotron jumbotron-fluid card card-image text-white text-center" style="background-image: url(../static/Images/heroimage.png);">
+    <h1 class="display-2">Create New Listing</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <!-- Start of Create Listing form. -->
+  <section> 
+    <div class="container py-3">
+      <div class="row">
+        <div class="mx-auto col-sm-12">
+          <div class="card border-warning">
+            <div class="card-header bg-warning border-warning">
+              <h4 class="mb-0 text-center text-secondary">Create New Listing</h4>
+            </div>
+            <div class="card-body">
+              <form action="" method="POST" role="form" class="form" enctype=multipart/form-data>
+                {{ form.csrf_token }}
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Listing Title:</label>
+                  <div class="col-lg-9">
+                    {{form.listing_title(class="form-control", type="text", placeholder="Enter listing title here")}}
+                    <ul>
+                      {% for error in form.listing_title.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Price:</label>
+                  <div class="col-lg-9">
+                    {{form.purchase_price(class="form-control", type="text", placeholder="Example: $50.00")}}
+                    <ul>
+                      {% for error in form.purchase_price.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Description:</label>
+                  <div class="col-lg-9">
+                    {{form.description(class="form-control textarea", type="text", placeholder="Enter description here", rows="5")}}
+                    <ul>
+                      {% for error in form.description.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <fieldset>
+                  <div class="form-group row">
+                    <label class="col-lg-3 control-label">Condition Of Game:</label>
+                    <div class="col-lg-9">
+                      {% for subfield in form.game_condition %}
+                        <tr>{{ subfield }}</tr>
+                        <tr>{{ subfield.label }}</tr>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Release Date:</label>
+                  <div class="col-lg-9">
+                    {{form.game_release_date(class="datepicker form-control")}}
+                    <ul>
+                      {% for error in form.game_release_date.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Genre:</label>
+                  <div class="col-lg-9">
+                    {{form.game_genre(class="SelectField form-control", placeholder="Enter description here")}}
+                    <ul>
+                      {% for error in form.game_genre.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Classification:</label>
+                  <div class="col-lg-9">
+                    {{form.game_classification(class="SelectField form-control")}}
+                    <ul>
+                      {% for error in form.game_classification.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Platform:</label>
+                  <div class="col-lg-9">
+                    {{form.game_platform(class="SelectField form-control")}}
+                    <ul>
+                      {% for error in form.game_platform.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Upload Image:</label>
+                  <div class="col-lg-9">
+                    {{form.listing_img_url(class="FileField")}}
+                    <ul>
+                      {% for error in form.listing_img_url.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12 col-lg-9 pr-lg-1 col-xl-9 pr-xl-5">
+                    <div class="postButtons">
+                      {{form.submit(class="btn btn-success mr-1")}}
+                      <a href="/" role="button" class="btn btn-danger">Cancel</a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End of Create Listing form. -->
+{% endblock %}

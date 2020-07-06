@@ -1,0 +1,104 @@
+<!-- Management page for a listing from the current user. -->
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <!-- Jumbotron. -->
+  <div class="jumbotron jumbotron-fluid card card-image text-white text-center" style="background-image: url(../static/Images/heroimage.png);">
+    <h1 class="display-2">Manage Listing</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <section class="py-3">
+    {% if listing.availability_status == 'Available' %}
+    <!-- Data for unsold listing. -->
+      <div class="row">
+        <div class="col-md-3">
+          <article class="card">
+            <img class="card-img-top" src="{{listing.listing_img_url}}" alt="{{listing.listing_title}} Image">
+            <div class="card-body">
+              <h4 class="card-title text-center text-secondary">Listing ID #{{listing}}<br>{{listing.listing_title}}</h4>
+              <p class="card-text text-center">
+                {{listing.game_platform}}<br>{{listing.purchase_price}}<br>Date Listed: {{listing.date_posted}}
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-9">
+          <h4 class="p-3 mb-0 text-center text-secondary bg-warning">Manage Listing</h4>
+          <div class="table-wrapper-scroll-y custom-scrollbar">
+            <!-- Bids for this listing. -->
+            {% if (bids is defined) and bids %}
+              <table class="table table-bordered table-striped mb-0" style="overflow-x:scroll;">
+                <thead class="text-secondary">
+                  <tr>
+                    <th scope="col">Date of Bid</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Contact Number</th>
+                    <th scope="col">Select Bid</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for bid in bids %}
+                    <tr>
+                      <td style="vertical-align:middle;">{{bid.date_of_bid}}</td>
+                      <td style="vertical-align:middle;">{{bid.user_name}}</td>
+                      <td style="vertical-align:middle;">{{bid.email_id}}</td>
+                      <td style="vertical-align:middle;">{{bid.contact_number}}</td>
+                      <td><a class ="btn btn-warning" name="select_bid" value="selectbid" href="/manage/{{listing.id}}?user_id={{bid.id}}&listing_id={{bid.listing_id}}">Select Bid</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <table class="table table-bordered table-striped mb-0">
+                <thead class="text-secondary">
+                  <tr>
+                    <th scope="col">No bids have been submitted yet!</th>
+                  </tr>
+                </thead>
+              </table>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <br>
+    {% else %}
+      <!-- Data for sold listing. -->
+      <div class="row">
+        <div class="col-md-4">
+          <article class="card">
+            <img class="card-img-top" src="{{listing.listing_img_url}}" alt="{{listing.listing_title}} Image">
+            <div class="card-body">
+              <h4 class="card-title text-center text-secondary">Listing ID #{{listing}}<br>{{listing.listing_title}}</h4>
+              <p class="card-text text-center">
+                {{listing.game_platform}}<br>{{listing.purchase_price}}<br>Date Listed: {{listing.date_posted}}
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-8">
+          <h4 class="p-3 mb-0 text-center text-secondary bg-warning">Successfully sold!</h4>
+          <div class="table-wrapper-scroll-y custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0" style="overflow-x:scroll;">
+              <thead class="text-secondary">
+                <tr>
+                  <th scope="col">Buyer</th>
+                  <th scope="col">Date Sold</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{purchase.user_name}}</td>
+                  <td>{{purchase.purchase_date}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}

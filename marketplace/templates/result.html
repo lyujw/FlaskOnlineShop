@@ -1,0 +1,57 @@
+<!-- Results page for browsing. -->
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <!-- Jumbotron. -->
+  <div class="jumbotron jumbotron-fluid card card-image text-white text-center" style="background-image: url(../static/Images/heroimage.png);">
+    <h1 class="display-2">Results</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="text-secondary text-center pt-3">
+    <h1>Showing results matching:</h1>
+  </div>
+  <div class="text-secondary text-center">
+    <h1>{{search_category}}</h1>
+  </div>
+  <!-- Search results. -->
+  <div class="row">
+    {% if (listings is defined) and listings %}
+      {% for listing in listings %}
+        <div class="col-md-10 offset-md-1">
+          <div class="card my-3">
+            <div class="card-body">
+              <div class="media">
+                <img class="align-self-center mr-3" src="{{listing.listing_img_url}}" alt="{{listing.listing_title}}" style="max-width: 250px;">
+                <div class="media-body">
+                  <h4 class="mt-0" style="color: #6c757d;">{{listing.listing_title}}</h4>
+                  <small class="font-weight-bold text-muted">{{listing.game_platform}}</small>
+                  <p>{{listing.purchase_price}}</p>
+                  <p class="d-none d-sm-block d-md-none">{{listing.description | truncate(100)}}</p>
+                  <p class="d-none d-md-block d-lg-none">{{listing.description | truncate(160)}}</p>
+                  <p class="d-none d-lg-block d-xl-none">{{listing.description | truncate(250)}}</p>
+                  <p class="d-none d-xl-block">{{listing.description | truncate(300)}}</p>
+                  <p class="font-weight-bold" style="color: #6c757d;">{{listing.availability_status}}</p>
+                  <div class="row">
+                    <div class="col-sm order-sm-1 order-2">
+                      <a href="/listings/{{listing}}" class="btn btn-warning py-auto">See Details</a>
+                    </div>
+                    <div class="col-auto order-sm-2 order-1">
+                      <p>Listed: <br class="d-none d-sm-block d-md-none">{{listing.date_posted}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-center pt-3">There aren't any games in this category!</h4>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

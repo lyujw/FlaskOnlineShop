@@ -1,0 +1,14 @@
+<!-- 500 Internal Server Error error page. -->
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <!-- Jumbotron. -->
+  <div class="jumbotron jumbotron-fluid card card-image text-white text-center" style="background-image: url(../static/Images/heroimage.png);">
+    <h1 class="display-2">500 - Internal Server Error</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <h2 class="pt-3 pb-5" style="text-align:center;">Error 500: It's not you - it's us.</h2>
+{% endblock %}

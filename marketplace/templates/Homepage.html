@@ -1,0 +1,38 @@
+<!-- Landing page. -->
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <!-- Jumbotron. -->
+  <div class="jumbotron jumbotron-fluid card card-image text-white text-center" style="background-image: url(../static/Images/heroimage.png);">
+    <h1 class="display-2">Gamerverse</h1>
+    <h2 class="display-4">A peer-to-peer marketplace</h2>
+    <h2 class="display-4">(For gamers, by gamers)</h2>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <!-- Recently Listed Games Collection: will display 8 most recently created listings. -->
+  <section class="">
+    <div class="text-secondary text-center py-3">
+      <h1>Recently Listed Video Games</h1>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        {% for listing in listings %}
+          <div class="col-sm-6 col-md-4 col-lg-3 pb-3 d-flex">
+            <article class="card flex-fill">
+              <img class="card-img-top" src={{listing.listing_img_url}} alt={{listing.listing_title}}>
+              <div class="card-body">
+                <h4 class="card-title text-center">{{listing.listing_title}}</h4>
+                <p class="card-text text-center">{{listing.game_platform}}<br>{{listing.purchase_price}}<br></p>
+                <p class="font-weight-bold text-center" style="color: #6c757d;">(Select for more details)</p>
+                <a href="/listings/{{listing}}" class="stretched-link" target="_self"></a>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

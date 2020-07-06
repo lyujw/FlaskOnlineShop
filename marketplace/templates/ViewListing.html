@@ -1,0 +1,90 @@
+<!-- Page for viewing a listing in detail. -->
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <!-- Jumbotron. -->
+  <div class="jumbotron jumbotron-fluid card card-image text-white text-center" style="background-image: url(../static/Images/heroimage.png);">
+    <h1 class="display-2">View Listing</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <!-- Listing details. -->
+  <section>
+    <div class="card-deck pt-3">
+      <article class="card">
+        <img class="card-img-top" src="{{listing.listing_img_url}}">
+        <div class="card-body">
+          <h4 class="card-title text-center text-secondary">Listing Details:<br></h4>
+          <p class="card-text text-center">Date Listed: {{listing.date_posted}}<br>Listed By: {{listing.user}}<br>Listing ID #{{listing.id}}</p>
+        </div>
+      </article>
+      <div class="card text-center">
+        <h1 class="card-header text-secondary">{{listing.listing_title}}<br>{{listing.purchase_price}}</h1>
+        <div class="card-body">
+          <p class="text-center pt-2 pb-3"><strong>Price:</strong> {{listing.purchase_price}}</p>
+          <hr>
+          <p class="text-center pt-2 pb-3"><strong>Description:</strong> {{listing.description}}</p>
+          <hr>
+          <p class="text-center pt-2 pb-3"><strong>Condition Of Game:</strong> {{listing.game_condition}}</p>
+          <hr>
+          <p class="text-center pt-2 pb-3"><strong>Release Date:</strong> {{listing.game_release_date}}</p>
+          <hr>
+          <p class="text-center pt-2 pb-3"><strong>Genre:</strong> {{listing.game_genre}}</p>
+          <hr>
+          <p class="text-center pt-2 pb-3"><strong>Classification:</strong> {{listing.game_classification}}</p>
+          <hr>
+          <p class="text-center pt-2 pb-3"><strong>Platform:</strong> {{listing.game_platform}}</p>
+          <hr>
+          <p class="text-center pt-2"><strong>Availability:</strong> {{listing.availability_status}}</p>
+        </div>
+        <!-- Bid/Management buttons and bid submission text. -->
+        {% if current_user == listing.user %}
+          <div class="card-footer text-muted">
+            <div class="d-flex justify-content-center">
+              <a href="/manage/{{listing.id}}" class ="btn btn-warning">Manage Listing</a>
+            </div>
+          </div>
+        {% elif listing.availability_status == 'Available' and bids is none %}
+          <div class="card-footer text-muted">
+            <div class="bidButton">
+              <button type="button" class="btn btn-success mr-1" data-toggle="modal" data-target="#confirmationModal">Bid Now</button>
+              <a href="#" class ="btn btn-danger" onclick="window.history.back();return false;">Back</a>
+            </div>
+          </div>
+        {% elif listing.availability_status == 'Available' and bids is not none %}
+          <div class="card-footer text-muted">
+            <h4>Bid submitted on {{bids.date_of_bid}}!</h4>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <br>
+  </section>
+
+  <!-- Modal for confirming bid submission. -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmationModal">Confirm Bid</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-center pb-3">Are you sure you want to make a bid of {{listing.purchase_price}} on {{listing.listing_title}}?</p>
+        </div>
+        <div class="modal-footer">
+          <form action="/confirmbid" method="post">
+            <input type="hidden" name="listingID" value={{listing.id}} />
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <button type="submit" class="btn btn-success" value="confirm">Confirm Bid</button>
+          </form>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

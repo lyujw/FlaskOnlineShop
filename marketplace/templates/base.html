@@ -1,0 +1,258 @@
+<!-- Base page template. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Gamerverse: A peer-to-peer marketplace</title>
+  <meta name="description" content="Gamerverse: A peer-to-peer marketplace">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../static/CSS File/gamerversestyle.css">
+</head>
+
+<body>
+  <header>
+    <!-- Jumbotron. -->
+    {% block header %}
+    {% endblock %}
+
+    <!-- Start of navbar. -->
+    <nav class="navbar navbar-expand-lg bg-warning navbar-light mb-3">
+      <a class="navbar-brand" href="/">&nbsp; Gamerverse</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav ml-auto pl-3">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <!-- Start of Browse by Category dropdown menu. -->
+          <li class="dropdown dropdown_item">
+            <a class="dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse By Category</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Platform</a>
+                <ul class="dropdown-menu dropdown_item" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Arcade Systems?search_category=Platform - Arcade">Arcade Systems</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Atari?search_category=Platform - Atari">Atari</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Commodore 64?search_category=Platform - Commodore 64">Commodore 64</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Nintendo?search_category=Platform - Nintendo">Nintendo</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Nintendo 64?search_category=Platform - Nintendo 64">Nintendo 64</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Nintendo 3DS?search_category=Platform - Nintendo 3DS">Nintendo 3DS</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Nintendo DS?search_category=Platform - Nintendo DS">Nintendo DS</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Nintendo Switch?search_category=Platform - Nintendo Switch">Nintendo Switch</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Nintendo Wii?search_category=Platform - Nintendo Wii">Nintendo Wii</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Nintendo Wii U?search_category=Platform - Nintendo Wii U">Nintendo Wii U</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=PC?search_category=Platform - PC">PC</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Playstation 3?search_category=Platform - Playstation 3">Playstation 3</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Playstation 4?search_category=Platform - Playstation 4">Playstation 4</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Playstation Classic?search_category=Platform - Playstation Classic">Playstation Classic</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Playstation Vita?search_category=Platform - Playstation Vita">Playstation Vita</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=SEGA?search_category=Platform - SEGA">SEGA</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Super Nintendo?search_category=Platform - Super Nintendo">Super Nintendo</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Xbox 360?search_category=Platform - Xbox 360">Xbox 360</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/platform_id=Xbox One?search_category=Platform - Xbox One">Xbox One</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Genre</a>
+                <ul class="dropdown-menu dropdown_item" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Action?search_category=Action">Action</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Action-Adventure?search_category=Genre - Action-Adventure">Action-Adventure</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Adventure?search_category=Genre - Adventure">Adventure</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Casual?search_category=Genre - Casual">Casual</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Party?search_category=Genre - Party">Party</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Role Playing?search_category=Genre - Role Playing">Role Playing</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Simulation?search_category=Genre - Simulation">Simulation</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Strategy?search_category=Genre - Strategy">Strategy</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=Sports?search_category=Genre - Sports">Sports</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/genre_id=MMO?search_category=Genre - MMO">MMO</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classification</a>
+                <ul class="dropdown-menu dropdown_item" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="nav-link" href="/results/classification_id=Exempt?search_category=Classification - Exempt">Exempt (E)</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/classification_id=General?search_category=Classification - General">General (G)</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/classification_id=Parental Guidance?search_category=Classification - Parental Guidance">Parental Guidance (PG)</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/classification_id=Mature?search_category=Classification - Mature">Mature (M)</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/classification_id=Mature Accompanied?search_category=Classification - Mature Accompanied">Mature Accompanied (MA15+)</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/classification_id=Restricted?search_category=Classification - Restricted">Restricted (R 18+)</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Condition</a>
+                <ul class="dropdown-menu dropdown_item" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="nav-link" href="/results/condition_id=New?search_category=Game Condition - New">New</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/results/condition_id=Preowned?search_category=Game Condition - Preowned">Preowned</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <!-- End of Browse by Category dropdown menu. -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/create">Create New Listing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/manageall">Manage Listings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sellerhistory">Sales History</a>
+          </li>
+          {% if current_user.is_authenticated %}
+            <a class="nav-item nav-link disabled text-muted" href="#">
+              <span>Welcome, {{ current_user.user_name }}</span>
+            </a>
+            <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+          {% else %}
+            <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a>
+            <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">Register</a>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <!-- End of navbar. -->
+  </header>
+
+
+  <main>
+    <div class="container-fluid">
+      <!-- Message display. -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="container">
+          <div class="row mt-3">
+            <div class="col-md-12">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endwith %}
+
+      <!-- Main page content. -->
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+
+  <footer>
+    <div class="text-center pt-5 pb-3">
+      <p>Copyright &copy 2020 Designed By Jiawei-Lyu,Ruihong-Zou,Xinyu-Liu,Kaiqi-Wang</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap optional scripts. -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"></script>
+
+  <!-- Browse by Category navbar dropdown script. -->
+  <script>
+    $(document).ready(function () {
+      $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
+        if (!$(this).next().hasClass('show')) {
+          $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+          $('.dropdown-submenu .show').removeClass("show");
+        });
+
+        return false;
+      });
+    });
+  </script>
+</body>
+
+</html>
